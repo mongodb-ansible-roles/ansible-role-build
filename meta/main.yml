@@ -1,0 +1,13 @@
+galaxy_info:
+  author: John Chen
+  description: Role to set up build account on hosts
+  company: MongoDB
+  license: license (BSD, MIT)
+  min_ansible_version: 2.4
+  platforms:
+   - name: Debian
+     versions:
+     - 10
+  galaxy_tags:
+    - build
+dependencies: []
