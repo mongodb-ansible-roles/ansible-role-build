@@ -1,1 +1,1 @@
-{{ build_user }} ALL=(ALL) NOPASSWD: /bin/dmesg, /bin/date, /usr/sbin/tcpdump
+{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: /bin/dmesg, /bin/date, /usr/sbin/tcpdump

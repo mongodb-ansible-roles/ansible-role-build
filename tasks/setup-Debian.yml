@@ -16,9 +16,9 @@
 
 - name: Create build user and home directory
   user:
-    name: '{{ build_user }}'
+    name: '{{ ansible_env.USER }}'
     create_home: true
-    home: '{{ build_user_home }}'
+    home: '{{ ansible_env.HOME }}'
 
 - name: Copy build files
   template:
@@ -26,37 +26,16 @@
     dest: '{{ item.dest }}'
     mode: '{{ item.mode }}'
     owner: '{{ item.owner }}'
-    group: '{{ item.group }}'
   loop:
     - src: bashrc
-      dest: '{{ build_user_home }}/.bashrc'
+      dest: '{{ ansible_env.HOME }}/.bashrc'
       mode: '0600'
-      owner: '{{ build_user }}'
-      group: '{{ build_group }}'
+      owner: '{{ ansible_env.USER }}'
     - src: bash_profile
-      dest: '{{ build_user_home }}/.bash_profile'
+      dest: '{{ ansible_env.HOME }}/.bash_profile'
       mode: '0600'
-      owner: '{{ build_user }}'
-      group: '{{ build_group }}'
-    - src: evergreen.yml
-      dest: '{{ build_user_home }}/.evergreen.yml'
-      mode: '0600'
-      owner: '{{ build_user }}'
-      group: '{{ build_group }}'
+      owner: '{{ ansible_env.USER }}'
     - src: dmesg
       dest: /etc/sudoers.d/dmesg
       mode: '0440'
       owner: root
-      group: root
-
-- name: Check if cloud-init config is present
-  stat:
-    path: /etc/cloud/cloud.cfg
-  register: cloud
-
-- name: Disable cloud-init hosts file management
-  lineinfile:
-    path: /etc/cloud/cloud.cfg
-    regexp: '^ - update_etc_hosts'
-    state: absent
-  when: cloud.stat.exists
