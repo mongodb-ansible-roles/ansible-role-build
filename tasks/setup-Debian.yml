@@ -39,3 +39,7 @@
       dest: /etc/sudoers.d/dmesg
       mode: '0440'
       owner: root
+    - src: mongodb-build-system-id
+      dest: /etc/mongodb-build-system-id
+      mode: '0644'
+      owner: root
