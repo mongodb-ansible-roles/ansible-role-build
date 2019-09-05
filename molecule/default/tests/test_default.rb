@@ -11,3 +11,7 @@ end
 describe file('/root/.bash_profile') do
   it { should exist }
 end
+
+describe file('/etc/mongodb-build-system-id') do
+  it { should exist }
+end
