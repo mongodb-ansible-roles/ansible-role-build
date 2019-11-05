@@ -1,45 +1,48 @@
 ---
 # tasks file for build
 - name: Ensure directories exist
+  become: true
   file:
-    path: '{{ item.path }}'
-    state: '{{ item.state }}'
-    owner: '{{ item.owner }}'
-    group: '{{ item.group }}'
-    mode: '{{ item.mode }}'
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
   loop:
     - path: /etc/sudoers.d
       state: directory
       owner: root
       group: root
-      mode: '0755'
+      mode: "0755"
 
 - name: Create build user and home directory
+  become: true
   user:
-    name: '{{ ansible_env.USER }}'
+    name: "{{ ansible_env.USER }}"
     create_home: true
-    home: '{{ ansible_env.HOME }}'
+    home: "{{ ansible_env.HOME }}"
 
 - name: Copy build files
+  become: true
   template:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    mode: '{{ item.mode }}'
-    owner: '{{ item.owner }}'
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+    owner: "{{ item.owner }}"
   loop:
     - src: bashrc
-      dest: '{{ ansible_env.HOME }}/.bashrc'
-      mode: '0600'
-      owner: '{{ ansible_env.USER }}'
+      dest: "{{ ansible_env.HOME }}/.bashrc"
+      mode: "0600"
+      owner: "{{ ansible_env.USER }}"
     - src: bash_profile
-      dest: '{{ ansible_env.HOME }}/.bash_profile'
-      mode: '0600'
-      owner: '{{ ansible_env.USER }}'
+      dest: "{{ ansible_env.HOME }}/.bash_profile"
+      mode: "0600"
+      owner: "{{ ansible_env.USER }}"
     - src: dmesg
       dest: /etc/sudoers.d/dmesg
-      mode: '0440'
+      mode: "0440"
       owner: root
     - src: mongodb-build-system-id
       dest: /etc/mongodb-build-system-id
-      mode: '0644'
+      mode: "0644"
       owner: root
