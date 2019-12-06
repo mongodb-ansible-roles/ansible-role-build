@@ -15,13 +15,6 @@
       group: root
       mode: "0755"
 
-- name: Create build user and home directory
-  become: true
-  user:
-    name: "{{ ansible_env.USER }}"
-    create_home: true
-    home: "{{ ansible_env.HOME }}"
-
 - name: Copy build files
   become: true
   template:
@@ -31,13 +24,13 @@
     owner: "{{ item.owner }}"
   loop:
     - src: bashrc
-      dest: "{{ ansible_env.HOME }}/.bashrc"
+      dest: "~{{ build_user }}/.bashrc"
       mode: "0600"
-      owner: "{{ ansible_env.USER }}"
+      owner: "{{ build_user }}"
     - src: bash_profile
-      dest: "{{ ansible_env.HOME }}/.bash_profile"
+      dest: "~{{ build_user }}/.bash_profile"
       mode: "0600"
-      owner: "{{ ansible_env.USER }}"
+      owner: "{{ build_user }}"
     - src: dmesg
       dest: /etc/sudoers.d/dmesg
       mode: "0440"

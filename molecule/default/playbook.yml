@@ -4,3 +4,5 @@
   hosts: all
   roles:
     - role: ansible-role-build
+      vars:
+        build_user: root
