@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mongodb-ansible-roles/ansible-role-build/compare/v1.0.0...v1.1.0) (2019-12-06)
+
+
+### Features
+
+* Able to specify the build user ([d1a9989](https://github.com/mongodb-ansible-roles/ansible-role-build/commit/d1a998969063ef47c0d58822bb3fcf3d92671d8b))
+
 # 1.0.0 (2019-11-05)
 
 
