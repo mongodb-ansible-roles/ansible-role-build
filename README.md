@@ -10,6 +10,13 @@ Requirements
 
 None
 
+Role Variables
+--------------
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-------:|:--------:|
+| `build_user` | Name of the user that will run Evergreen tasks | string | `root` | yes |
+
 Dependencies
 ------------
 
