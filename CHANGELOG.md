@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/mongodb-ansible-roles/ansible-role-build/compare/v1.1.0...v1.2.0) (2020-01-13)
+
+
+### Bug Fixes
+
+* dmesg template to use build_user var ([6ae8a84](https://github.com/mongodb-ansible-roles/ansible-role-build/commit/6ae8a846c4f76f1cc2e8715b5ad8720cab2fb62b))
+* Extra lint steps added by running molecule ([8450b8d](https://github.com/mongodb-ansible-roles/ansible-role-build/commit/8450b8db5dfe333df705a351d79bc8428f461637))
+
+
+### Features
+
+* Allow role to run on all distros ([c0d8a9f](https://github.com/mongodb-ansible-roles/ansible-role-build/commit/c0d8a9f5de9be842bfe72577445f1aa37f262af4))
+
 # [1.1.0](https://github.com/mongodb-ansible-roles/ansible-role-build/compare/v1.0.0...v1.1.0) (2019-12-06)
 
 
