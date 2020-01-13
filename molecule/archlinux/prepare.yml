@@ -1,0 +1,22 @@
+---
+- gather_facts: false
+  hosts: archlinux
+  name: Prepare
+  tasks:
+    - name: Raw update pacman database
+      raw: pacman -Syu --noconfirm
+    - name: Raw install python
+      raw: pacman -S python3 --noconfirm
+    - name: Install sudo
+      pacman:
+        name: sudo
+        state: present
+    - name: Create arch group
+      group:
+        name: arch
+        state: present
+    - name: Create arch user
+      user:
+        name: arch
+        state: present
+        group: arch
