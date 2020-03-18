@@ -3,16 +3,27 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
-  - name: instance
+  - name: debian9
     image: debian:9
+  - name: debian10
+    image: debian:10
+  - name: rhel8
+    image: registry.redhat.io/ubi8
+  - name: rhel7
+    image: registry.redhat.io/ubi7
+  - name: ubuntu1604
+    image: ubuntu:16.04
+  - name: ubuntu1804
+    image: ubuntu:18.04
+  - name: ubuntu2004
+    image: ubuntu:20.04
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
 verifier:
-  name: inspec
-  lint:
-    name: rubocop
+  name: testinfra
